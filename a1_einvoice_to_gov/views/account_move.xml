@@ -182,7 +182,7 @@
             <xpath expr="//button[@name='action_reverse']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath expr="//button[@name='action_view_debit_notes']" position="attributes">
+            <xpath expr="//button[@name='action_view_debit_note']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
 
