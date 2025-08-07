@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="create_consolidate_invoice_form_view" model="ir.ui.view">
+            <field name="name">create_consolidate_invoice.form</field>
+            <field name="model">create.consolidate.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Create Consolidate Invoice">
+                    <sheet>
+                        <group col="2">
+                            <group>
+                                <field name="invoice_create_date"/>
+                                <field name="pos_orders" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="sale_orders" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button name="create_consolidate_invoice" type="object" string="Create Consolidate Invoice"
+                                    class="btn-primary"/>
+                            <button name="close_wizard" type="object" string="Close"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_create_consolidate_invoice" model="ir.actions.act_window">
+            <field name="name">Create Consolidate Invoice</field>
+            <field name="res_model">create.consolidate.invoice</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

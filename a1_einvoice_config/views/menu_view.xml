@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="e_invoice_menu_root" name="E-Invoice" sequence="10" web_icon="a1_einvoice_config,static/description/icon.png"/>
+    <menuitem id="config_menu" name="Configuration" parent="e_invoice_menu_root" sequence="100"/>
+    <menuitem id="api_config_menu" name="API Connect Setup" parent="config_menu" action="a1_einvoice_config.api_config_action_server" sequence="1"/>
+    <menuitem id="api_log_menu" name="E-Invoice Logs" parent="config_menu" action="a1_einvoice_config.api_log_action_server" sequence="2"/>
+
+</odoo>

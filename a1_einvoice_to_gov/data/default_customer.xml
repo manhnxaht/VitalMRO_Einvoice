@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_general_public" model="res.partner">
+        <field name="name">General Public</field>
+        <field name="is_company">True</field>
+        <field name="vat">EI00000000010</field>
+        <field name="customer_rank">1</field>
+        <field name="city">NA</field>
+        <field name="street">NA</field>
+        <field name="phone">+60000000000</field>
+        <field name="mobile">+60000000000</field>
+        <field name="email">generalpublic@gmail.com</field>
+
+        <!-- Custom fields -->
+        <field name="sst_registration_number">NA</field>
+        <field name="identification_type">BRN</field>
+        <field name="identification_number">NA</field>
+        <field name="tin_validation_state">valid</field>
+        <field name="country_id" ref="base.my"/>
+    </record>
+
+</odoo>

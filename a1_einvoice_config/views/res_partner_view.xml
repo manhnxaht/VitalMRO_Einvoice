@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">view_partner_form_inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="sst_registration_number" />
+                <field name="ttx_registration_number" />
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_form_inherit_property" model="ir.ui.view">
+        <field name="name">view_partner_form_inherit_property</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="account.view_partner_property_form" />
+        <field name="arch" type="xml">
+            <group name="container_row_2" position="inside">
+                <field name="tin_validation_state" invisible="1" />
+                <field name="country_id" invisible="1" />
+                <!-- I believe the customer must be registered for TIN in Malaysia, and thus it
+                makes sense to limit this to Malaysian customers -->
+                <group name="l10n_my_edi" string="MyInvois Information">
+                    <group colspan="2">
+                        <label for="identification_type" string="Identification" />
+                        <div class="d-flex gap-2">
+                            <field name="identification_type" />
+                            <span class="d-flex gap-2 w-100">
+                                <field name="identification_number_placeholder" invisible="1" /> <!--
+                                Needed for the placeholder widget -->
+                                <field name="identification_number" placeholder="830503-11-4923" />
+                                <button class="oe_link oe_inline p-0" type="object"
+                                    name="action_validate_tin"
+                                    attrs="{'invisible': [('tin_validation_state', '!=', False)]}">
+                                    Validate</button>
+                                <span class="text-success fa fa-check" title="Validation Successful"
+                                    attrs="{'invisible': [('tin_validation_state', '!=', 'valid')]}" />
+                                <span class="text-danger fa fa-close" title="Validation Failed"
+                                    attrs="{'invisible': [('tin_validation_state', '!=', 'invalid')]}" />
+                            </span>
+                        </div>
+                        <field name="a1_einvoice_config_industrial_classification" />
+                    </group>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>
+

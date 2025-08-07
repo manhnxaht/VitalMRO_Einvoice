@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_a1_einvoice_config_industry_classification_manager,a1_einvoice_config.industry_classification,model_a1_einvoice_config_industry_classification,,1,1,1,1
+access_api_config_system,access_api_config_system,model_api_myinvoice_config,,1,1,1,1
+access_api_sequence_system,access_api_sequence_system,model_api_myinvoice_sequence,,1,1,1,1
+access_api_log_system,access_api_log_system,model_api_myinvoice_log,,1,1,1,1
+
+

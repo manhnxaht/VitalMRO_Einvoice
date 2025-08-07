@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_write_cancel_einvoice_reason_user,access_write_cancel_einvoice_reason_user,model_write_cancel_einvoice_reason,,1,1,1,1
+access_adjustment_bill, access_adjustment_bill,model_adjustment_bill,,1,1,1,1
+access_adjustment_invoice,access_adjustment_invoice,model_adjustment_invoice,,1,1,1,1
+
+

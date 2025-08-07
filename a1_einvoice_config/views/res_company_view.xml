@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_company_form_inherit_my_myinvois" model="ir.ui.view">
+        <field name="name">view_company_form_inherit_my_myinvois</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[1]" position="inside">
+                <group>
+                    <group string="E-Invoicing" colspan="2">
+                        <label for="identification_type" string="Identification"/>
+                        <div class="d-flex gap-2 w-50">
+                            <field name="identification_type"/>
+                             <span class="d-flex gap-2 w-50">
+                                <field name="identification_number_placeholder" invisible="1"/> <!-- Needed for the placeholder widget -->
+                                <field name="identification_number" placeholder="830503-11-4923"/>
+                            </span>
+                        </div>
+                        <field class="w-50" name="a1_einvoice_config_industrial_classification"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_company_a1_einvoice_config" model="ir.ui.view">
+        <field name="name">view_company_a1_einvoice_config</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="sst_registration_number" placeholder="A01-2345-67891012"/>
+                <field name="ttx_registration_number" placeholder="123-4567-89012345"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

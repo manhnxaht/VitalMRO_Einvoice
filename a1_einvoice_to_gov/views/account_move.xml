@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_move_inherit_eivoice_view" model="ir.ui.view">
+        <field name="name">account_move_inherit_eivoice_view</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_view_credit_note"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-credit-card"
+                        attrs="{
+                        'invisible': [
+                            '|', '|', '|',
+                            ('x_type', '=', 'credit-note'),
+                            ('x_type', '=', 'debit-note'),
+                            ('x_type', '=', 'refund-note'),
+                            ('type', '!=', 'out_invoice')
+                        ]
+                    }">
+                    <span class="o_stat_value">
+                        <field name="x_invoice_credit_note_count"/>
+                    </span>
+                    <span class="o_stat_text">Credit Note</span>
+                </button>
+
+                <button name="action_view_debit_note"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-money"
+                        attrs="{
+                        'invisible': [
+                            '|', '|', '|',
+                            ('x_type', '=', 'credit-note'),
+                            ('x_type', '=', 'debit-note'),
+                            ('x_type', '=', 'refund-note'),
+                            ('type', '!=', 'out_invoice')
+                        ]
+                    }">
+                    <span class="o_stat_value">
+                        <field name="x_invoice_debit_note_count"/>
+                    </span>
+                    <span class="o_stat_text">Debit Note</span>
+                </button>
+                <button name="action_view_refund_note"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-undo"
+                        attrs="{
+                        'invisible': [
+                            '|', '|', '|',
+                            ('x_type', '=', 'credit-note'),
+                            ('x_type', '=', 'debit-note'),
+                            ('x_type', '=', 'refund-note'),
+                            ('type', '!=', 'out_invoice')
+                        ]
+                    }">
+                    <span class="o_stat_value">
+                        <field name="x_invoice_refund_note_count"/>
+                    </span>
+                    <span class="o_stat_text">Refund Note</span>
+                </button>
+            </xpath>
+
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_view_bill_credit_note"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-credit-card"
+                        attrs="{
+                        'invisible': [
+                               '|', '|','|',
+                            ('x_type', '=', 'self-bill-credit-note'),
+                            ('x_type', '=', 'self-bill-debit-note'),
+                            ('x_type', '=', 'self-bill-refund-note'),
+                            ('type', '!=', 'in_invoice')
+                        ]
+                    }">
+                    <span class="o_stat_value">
+                        <field name="x_bill_credit_note_count"/>
+                    </span>
+                    <span class="o_stat_text">Self-billed Credit Note</span>
+                </button>
+
+                <button name="action_view_bill_debit_note"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-money"
+                        attrs="{
+                        'invisible': [
+                            '|', '|', '|',
+                            ('x_type', '=', 'self-bill-credit-note'),
+                            ('x_type', '=', 'self-bill-debit-note'),
+                            ('x_type', '=', 'self-bill-refund-note'),
+                            ('type', '!=', 'in_invoice')
+                        ]
+                    }">
+                    <span class="o_stat_value">
+                        <field name="x_bill_debit_note_count"/>
+                    </span>
+                    <span class="o_stat_text">Self-billed Debit Note</span>
+                </button>
+                <button name="action_view_bill_refund_note"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-undo"
+                        attrs="{
+                        'invisible': [
+                            '|', '|', '|',
+                            ('x_type', '=', 'self-bill-credit-note'),
+                            ('x_type', '=', 'self-bill-debit-note'),
+                            ('x_type', '=', 'self-bill-refund-note'),
+                            ('type', '!=', 'in_invoice')
+                        ]
+                    }">
+                    <span class="o_stat_value">
+                        <field name="x_bill_refund_note_count"/>
+                    </span>
+                    <span class="o_stat_text">Self-billed Refund Note</span>
+                </button>
+            </xpath>
+            <xpath expr="//button[@name='action_post']" position="replace">
+                <button
+                        name="action_post"
+                        confirm="Are you sure that your product's classification codes are correct ?"
+                        string="Post"
+                        class="oe_highlight"
+                        type="object"
+                        attrs="{'invisible' : [('state', '=', 'posted')]}"/>
+            </xpath>
+
+            <xpath expr="//button[@name='action_post']" position="after">
+                <button
+                        name="action_submit"
+                        string="Send E-invoice"
+                        class="oe_highlight"
+                        type="object"
+                        attrs="{'invisible' : ['|',('x_is_bill_e_invoice_received', '=', True),  '|',('x_einvoice_state', '=', 'valid'),  ('state', '!=', 'posted')]}"/>
+            </xpath>
+            <xpath expr="//button[@name='action_post']" position="after">
+                <button
+                        name="action_create_consolidate_invoice"
+                        string="Create Consolidate Invoice"
+                        type="object"
+                        class="oe_highlight"
+                />
+            </xpath>
+            <xpath expr="//button[@name='action_post']" position="after">
+                <button
+                        name="action_adjustment_bill"
+                        string="Adjustment Bill"
+                        type="object"
+                        attrs="{'invisible' : [('type', '!=', 'in_invoice')]}"/>
+            </xpath>
+            <xpath expr="//button[@name='action_post']" position="after">
+                <button
+                        name="action_adjustment_invoice"
+                        string="Adjustment Invoice"
+                        type="object"
+                        attrs="{'invisible' : ['|', ('type', '!=', 'out_invoice'), ('state', '!=', 'posted')]}"/>
+            </xpath>
+            <xpath expr="//button[@name='button_cancel']" position="after">
+                <button
+                        name="action_open_wizard_cancel_reason"
+                        string="Cancel E-invoice"
+                        type="object"
+                        attrs="{'invisible' : [('x_einvoice_state', 'in', ['invalid','submit','draft', 'cancel'])]}"/>
+            </xpath>
+
+            <xpath expr="//button[@name='button_cancel']" position="after">
+                <button
+                        name="send_email"
+                        string="Send email"
+                        type="object"
+                        attrs="{'invisible' : [('x_einvoice_state', '!=', 'valid')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']" position="attributes">
+                <attribute name="editable">bottom</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_reverse']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_view_debit_notes']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']"
+                   position="after">
+                <field name="x_classification_code" optional="show"/>
+                <field name="x_manual_classification_code" optional="show" readonly="0"
+                       force_save="1"/>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="x_is_bill_e_invoice_received"
+                       attrs="{'invisible' : [('type', '!=', 'in_invoice')]}"/>
+            </xpath>
+            <xpath expr="//span[@class='o_form_label']"
+                   position="replace">
+                <span class="o_form_label">
+
+                    <span name="type" class="o_field_widget o_readonly_modifier o_required_modifier">
+                        <field name="x_display_document_type" readonly="1"/>
+                    </span>
+                </span>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="MyInvois">
+                    <group>
+                        <group>
+                            <field name="x_display_tax_exemption_reason" invisible="1"/>
+                            <field name="x_exemption_reason"/>
+                            <field name="x_custom_form_reference"/>
+                            <field name="x_type" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="x_einvoice_state" readonly="1"/>
+                            <field name="x_manual_check"/>
+                            <field name="x_my_einvoice_longid" readonly="1"/>
+                            <field name="x_my_einvoice_link_to_portal" widget="url" readonly="1"/>
+                            <field name="x_client_provided_link" widget="url"/>
+                            <field name="x_submission_uid"/>
+                            <field name="x_validation_time"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_invoice_tree_einvoice_inherit" model="ir.ui.view">
+        <field name="name">account.invoice.tree.einvoice.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="x_einvoice_state" string="E-invoice Status" optional="show"/>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="account.menu_action_move_in_refund_type" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+    <record id="account.menu_action_move_out_refund_type" model="ir.ui.menu">
+        <field name="active" eval="False"/>
+    </record>
+</odoo>

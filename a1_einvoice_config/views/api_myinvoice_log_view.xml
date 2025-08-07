@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="api_log_view_form" model="ir.ui.view">
+        <field name="name">api.myinvoice.log.view.form</field>
+        <field name="model">api.myinvoice.log</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <field name="status" />
+                        <field name="error_code" />
+                        <field name="name" />
+                        <field name="sequence_id" />
+                        <field name="api_config_id" />
+                        <field name="data" />
+                        <field name="create_date" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="api_log_view_tree" model="ir.ui.view">
+        <field name="name">api.myinvoice.log.view.tree</field>
+        <field name="model">api.myinvoice.log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="status" />
+                <field name="error_code" />
+                <field name="name" />
+                <field name="sequence_id" />
+                <field name="api_config_id" />
+                <field name="create_date" />
+            </tree>
+        </field>
+    </record>
+    <record id="api_log_action_server" model="ir.actions.act_window">
+        <field name="name">E-Invoice Logs</field>
+        <field name="res_model">api.myinvoice.log</field>
+        <!-- <field name="view_type">form</field> -->
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
