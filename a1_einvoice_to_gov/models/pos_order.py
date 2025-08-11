@@ -50,9 +50,9 @@ class PosOrder(models.Model):
             })
 
         # Get product lines in POS Order
-        order_lines = vals.get('lines', [])
+        order_lines = vals.get('lines', []) or []
         sale_order_lines = []
-        for line in order_lines or []:
+        for line in order_lines:
             product = self.env['product.product'].browse(
                 line[2].get('product_id'))
             
