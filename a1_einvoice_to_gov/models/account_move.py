@@ -318,7 +318,7 @@ class AccountMove(models.Model):
         export_string_translation=False,
     )
     x_display_tax_exemption_reason = fields.Boolean(
-        compute="_compute_x_display_tax_exemption_reason",
+        # compute="_compute_x_display_tax_exemption_reason",
         string="Display Tax Exemption Reason",
         export_string_translation=False,
     )
@@ -400,23 +400,23 @@ class AccountMove(models.Model):
     )
     x_tax_exemtion_amount = fields.Float(string="Tax Exemtion Amount", default=0)
     x_invoice_credit_note_count = fields.Integer(
-        string="Invoice credit note count", compute="_compute_invoice_credit_note_count"
+        # string="Invoice credit note count", compute="_compute_invoice_credit_note_count"
     )
     x_invoice_debit_note_count = fields.Integer(
-        string="Invoice debit not count", compute="_compute_invoice_debit_note_count"
+        # string="Invoice debit not count", compute="_compute_invoice_debit_note_count"
     )
     x_invoice_refund_note_count = fields.Integer(
-        string="Invoice refund note count", compute="_compute_invoice_refund_note_count"
+        # string="Invoice refund note count", compute="_compute_invoice_refund_note_count"
     )
 
     x_bill_credit_note_count = fields.Integer(
-        string="Bill credit note count", compute="_compute_bill_credit_note_count"
+        # string="Bill credit note count", compute="_compute_bill_credit_note_count"
     )
     x_bill_debit_note_count = fields.Integer(
-        string="Bill debit not count", compute="_compute_bill_debit_note_count"
+        # string="Bill debit not count", compute="_compute_bill_debit_note_count"
     )
     x_bill_refund_note_count = fields.Integer(
-        string="Bill refund note count", compute="_compute_bill_refund_note_count"
+        # string="Bill refund note count", compute="_compute_bill_refund_note_count"
     )
 
     def _compute_bill_debit_note_count(self):
