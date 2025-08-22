@@ -5,13 +5,14 @@ class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     x_classification_code = fields.Char(
-        string="Classification Code", compute="_compute_classification_code", store=True
+        # string="Classification Code", compute="_compute_classification_code", store=True
+        string="Classification Code", store=True
     )
 
     x_manual_classification_code = fields.Selection(
         string="Manual Classification Code",
         help="Use this if you want this invoice line have different Classification code",
-        compute="_compute_classification_code",
+        # compute="_compute_classification_code",
         default=False,
         selection=[
             ("001", "(001) Breastfeeding equipment "),
