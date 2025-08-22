@@ -10,6 +10,8 @@ class AccountTax(models.Model):
     # Fields declaration
     # ------------------
 
+    country_id = fields.Many2one(string='Country', comodel_name='res.country', related='company_id.country_id', help="Technical field used to restrict the domain of account tags for tax repartition lines created for this tax.")
+
     x_my_tax_type = fields.Selection(
         selection=[
             ('01', "Sales Tax"),
