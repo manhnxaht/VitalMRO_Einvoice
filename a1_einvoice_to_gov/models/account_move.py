@@ -283,7 +283,7 @@ class AccountMove(models.Model):
 
     x_file_id = fields.Many2one(
         comodel_name="ir.attachment",
-        compute=lambda self: self._compute_linked_attachment_id("x_file_id", "x_file"),
+        # compute=lambda self: self._compute_linked_attachment_id("x_file_id", "x_file"),
         depends=["x_file"],
         copy=False,
         readonly=True,
