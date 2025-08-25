@@ -136,8 +136,11 @@
                         string="Send E-invoice"
                         class="oe_highlight"
                         type="object"
-                        attrs="{'invisible' : ['|',('x_is_bill_e_invoice_received', '=', True),  '|',('x_einvoice_state', '=', 'valid'),  ('state', '!=', 'posted')]}"/>
+                        attrs="{'invisible' : ['|',('x_einvoice_state', '=', 'valid'),  ('state', '!=', 'posted')]}"
+                />
             </xpath>
+<!--                                    attrs="{'invisible' : ['|',('x_is_bill_e_invoice_received', '=', True),  '|',('x_einvoice_state', '=', 'valid'),  ('state', '!=', 'posted')]}"-->
+
             <xpath expr="//button[@name='action_post']" position="after">
                 <button
                         name="action_create_consolidate_invoice"
@@ -192,10 +195,10 @@
                 <field name="x_manual_classification_code" optional="show" readonly="0"
                        force_save="1"/>
             </xpath>
-            <xpath expr="//field[@name='company_id']" position="after">
-                <field name="x_is_bill_e_invoice_received"
-                       attrs="{'invisible' : [('type', '!=', 'in_invoice')]}"/>
-            </xpath>
+<!--            <xpath expr="//field[@name='company_id']" position="after">-->
+<!--                <field name="x_is_bill_e_invoice_received"-->
+<!--                       attrs="{'invisible' : [('type', '!=', 'in_invoice')]}"/>-->
+<!--            </xpath>-->
             <xpath expr="//span[@class='o_form_label']"
                    position="replace">
                 <span class="o_form_label">
