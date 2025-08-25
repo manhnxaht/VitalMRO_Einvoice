@@ -1,10 +1,10 @@
 """
-    const params
+const params
 """
-
+ 
 # get access token Mytax Portal
-api_url = 'api.myinvois.hasil.gov.my'
-share_url = 'myinvois.hasil.gov.my'
-env_base_url = 'api.myinvois.hasil.gov.my'
-grant_type = 'client_credentials'
-scope = 'InvoicingAPI'
+api_url = "preprod-api.myinvois.hasil.gov.my"
+share_url = "preprod.myinvois.hasil.gov.my"
+env_base_url = "preprod-api.myinvois.hasil.gov.my"
+grant_type = "client_credentials"
+scope = "InvoicingAPI"
