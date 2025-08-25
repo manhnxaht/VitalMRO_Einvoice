@@ -428,7 +428,7 @@ class AccountMove(models.Model):
             if move.state == "posted":
                 domain = [
                     ("debit_origin_id", "=", move.id),
-                    ("type", "=", "in_invoice"),
+                    ("move_type", "=", "in_invoice"),
                     "|",
                     ("x_type", "=", "self-bill-debit-note"),
                     ("x_type", "=", False),
@@ -446,7 +446,7 @@ class AccountMove(models.Model):
             if move.state == "posted":
                 domain = [
                     ("debit_origin_id", "=", move.id),
-                    ("type", "=", "out_invoice"),
+                    ("move_type", "=", "out_invoice"),
                     "|",
                     ("x_type", "=", "debit-note"),
                     ("x_type", "=", False),
@@ -490,7 +490,7 @@ class AccountMove(models.Model):
                 #       which may not have our x_type set, while excluding a specific type).
                 domain = [
                     ("reversed_entry_id", "=", move.id),
-                    ("type", "=", "in_refund"),
+                    ("move_type", "=", "in_refund"),
                     "|",
                     ("x_type", "=", "self-bill-credit-note"),
                     ("x_type", "!=", "self-bill-refund-note"),
@@ -516,7 +516,7 @@ class AccountMove(models.Model):
                 #       which may not have our x_type set, while excluding a specific type).
                 domain = [
                     ("reversed_entry_id", "=", move.id),
-                    ("type", "=", "out_refund"),
+                    ("move_type", "=", "out_refund"),
                     "|",
                     ("x_type", "=", "credit-note"),
                     ("x_type", "!=", "refund-note"),
@@ -534,7 +534,7 @@ class AccountMove(models.Model):
             if move.state == "posted":
                 domain = [
                     ("reversed_entry_id", "=", move.id),
-                    ("type", "=", "out_refund"),
+                    ("move_type", "=", "out_refund"),
                     ("x_type", "=", "refund-note"),
                 ]
                 count = self.env["account.move"].search_count(domain)
@@ -550,7 +550,7 @@ class AccountMove(models.Model):
             if move.state == "posted":
                 domain = [
                     ("reversed_entry_id", "=", move.id),
-                    ("type", "=", "in_refund"),
+                    ("move_type", "=", "in_refund"),
                     ("x_type", "=", "self-bill-refund-note"),
                 ]
                 count = self.env["account.move"].search_count(domain)
